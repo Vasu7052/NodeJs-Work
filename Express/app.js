@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser'); // For Handling Cookies
 var bodyParser = require('body-parser'); // For parsing a text/json body
 
 var index = require('./routes/index'); // routes are brains behind everything
+var about = require("./routes/about") ;
 
 var app = express(); // Connect framework
 
@@ -21,6 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index); // Looking up for paths
+app.use('/about', about);
+
 
 // catch 404 and forward to error handler          // This block of error handler is used at the time of development
 app.use(function(req, res, next) {
