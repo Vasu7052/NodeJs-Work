@@ -21,11 +21,13 @@ function send404Response(response) {
 
 // Handle a user request
 function onRequest(request , response) {
-    if (request.method == "GET" && request.url == "/"){  // forward slash means they are trying to connect to the homepage
-
-    }else{
-
+    if (request.method == "GET" && request.url == "/") {  // forward slash means they are trying to connect to the homepage
+        response.writeHead(200, {"Content-Type": "text/html"});
+        fs.createReadStream("./index.html").pipe(response);
+    } else {
+        send404Response(response);
     }
+}
 
 
 http.createServer(onRequest).listen(8888);
