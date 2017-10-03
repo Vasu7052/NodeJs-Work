@@ -4,6 +4,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require("mongoose") ;
+mongoose.connect('mongodb://localhost/bookstore', { useMongoClient: true }) ;
+var db = mongoose.connection ;
+
+Genre = require("./routes/genre");
+Book = require("./routes/book");
+
 var index = require('./routes/index');
 
 var app = express();
@@ -20,7 +27,39 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// app.use('/', index);
+
+app.get("/" , function (req , res) {
+    res.send("Hello World") ;
+});
+
+app.get('/api/genres/', function(req, res){
+    Genre.getGenres(function(err, genres){
+    if(err){
+        throw err;
+    }
+    res.json(genres);
+});
+});
+
+app.get('/api/books/', function(req, res){
+    Book.getBooks(function(err, books){
+        if(err){
+            throw err;
+        }
+        res.json(books);
+    });
+});
+
+app.get('/api/books/:_id', function(req, res){
+    Book.getBookById(req.params._id, function(err, book){
+    if(err){
+        throw err;
+    }
+    res.json(book);
+});
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
