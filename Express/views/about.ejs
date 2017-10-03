@@ -29,7 +29,7 @@
         <td><%= videodata.categories[i].parentID %></td>
         <td><%= videodata.categories[i].subjectID %></td>
         <td><%= videodata.categories[i].categoryName %></td>
-        <td><%= videodata.categories[i].categoryDescription %></td>
+        <td><a href = "https://thenewboston.com/videos_food.php?cat=<%= videodata.categories[i].categoryID %>" ><%= videodata.categories[i].categoryDescription %> </a></td>
         <td><%= videodata.categories[i].videosCount %></td>
         <td><%= videodata.categories[i].forumCategoryID %></td>
     </tr>
