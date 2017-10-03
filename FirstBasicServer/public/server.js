@@ -2,7 +2,7 @@ var http = require("http") ;
 
 function onRequest(request , response) {
     console.log("A User made a request" + request.url);
-    response.writeHead(200 , {"Context-Type" : "text/plain"}); // 200 is a status code that means that all is ok
+    response.writeHead(200 , {"Content-Type" : "text/plain"}); // 200 is a status code that means that all is ok
     response.write("Here is your response") ;
     response.end() ;
 }
