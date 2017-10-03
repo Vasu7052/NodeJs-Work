@@ -9,3 +9,7 @@ var websiteAbout = "Desktop/Vasu/about.html" ;
 
 console.log(path.normalize(websiteHome));
 console.log(path.normalize(websiteAbout));
+
+console.log(path.dirname(websiteHome));
+console.log(path.basename(websiteHome));
+console.log(path.extname(websiteHome));
