@@ -11,6 +11,8 @@ var app = express(); // Connect framework
 
 app.locals.points = "8.4778" ;
 
+app.locals.videodata = require("./video_data.json") ;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

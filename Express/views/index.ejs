@@ -17,5 +17,33 @@
     <% for (var i = 0 ; i < 5 ; i++) { %>
     <h4>NodeJs</h4>
     <% } %>
+
+    <h2>JSON Parsing : </h2>
+    <table>
+      <tr>
+        <th>CategoryID</th>
+        <th>ParentID</th>
+        <th>SubjectID</th>
+        <th>CategoryName</th>
+        <th>CategoryDescription</th>
+        <th>VideosCount</th>
+        <th>ForumCategoryID</th>
+      </tr>
+
+        <% for (var i = 0 ; i < videodata.categories.length ; i++) { %>
+        <tr>
+          <td><%= videodata.categories[i].categoryID %></td>
+          <td><%= videodata.categories[i].parentID %></td>
+          <td><%= videodata.categories[i].subjectID %></td>
+          <td><%= videodata.categories[i].categoryName %></td>
+          <td><%= videodata.categories[i].categoryDescription %></td>
+          <td><%= videodata.categories[i].videosCount %></td>
+          <td><%= videodata.categories[i].forumCategoryID %></td>
+        </tr>
+        <% } %>
+
+    </table>
+
+
   </body>
 </html>
