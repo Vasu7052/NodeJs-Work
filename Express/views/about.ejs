@@ -12,7 +12,7 @@
 <p>Hiii my name is vasu and i am a programmer . </p>
 
 
-// For making table out of json file
+<!-- For making table out of json file -->
 <h2>JSON Parsing : </h2>
 
 <table>
@@ -32,6 +32,7 @@
         <td><%= videodata.categories[i].parentID %></td>
         <td><%= videodata.categories[i].subjectID %></td>
         <td><%= videodata.categories[i].categoryName %></td>
+        <!-- Perform clicks on the descriptions to reach to video -->
         <td><a href = "https://thenewboston.com/videos_food.php?cat=<%= videodata.categories[i].categoryID %>" ><%= videodata.categories[i].categoryDescription %> </a></td>
         <td><%= videodata.categories[i].videosCount %></td>
         <td><%= videodata.categories[i].forumCategoryID %></td>
