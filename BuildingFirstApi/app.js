@@ -52,7 +52,7 @@ app.get('/api/books/', function(req, res){
 });
 
 app.get('/api/books/:_id', function(req, res){
-    Book.getBookById(req.params._id, function(err, book){
+    Book.getBooksById(req.params._id, function(err, book){
     if(err){
         throw err;
     }
