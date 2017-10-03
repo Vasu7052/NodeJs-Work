@@ -10,9 +10,23 @@ var http = require("http") ;
 http.createServer(onRequest).listen(8888);
 console.log("Server is Now Running..") ;  */  // This is for sending a basic string in response
 
-function onRequest(request , response) {
-    
+var fs = require("fs");
+
+// 404 response
+function send404Response(response) {
+    response.writeHead(404 , {"Content-Type" : "text/plain"}) ;
+    response.write("Error 404 Not Found");
+    response.end();
 }
+
+// Handle a user request
+function onRequest(request , response) {
+    if (request.method == "GET" && request.url == "/"){  // forward slash means they are trying to connect to the homepage
+
+    }else{
+
+    }
+
 
 http.createServer(onRequest).listen(8888);
 console.log("Server is Now Running..") ;
