@@ -13,3 +13,6 @@ console.log(path.normalize(websiteAbout));
 console.log(path.dirname(websiteHome));
 console.log(path.basename(websiteHome));
 console.log(path.extname(websiteHome));
+
+console.log(__dirname) ;
+console.log(__filename) ;
