@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.vasu.firstapiproject_android.Model.BooksResponse;
 import com.example.vasu.firstapiproject_android.Model.GenreResponse;
 import com.example.vasu.firstapiproject_android.helper.ApiClient;
 import com.example.vasu.firstapiproject_android.helper.ApiInterface;
@@ -65,7 +66,7 @@ public class Tab1 extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), ViewListActivity.class);
+                Intent i = new Intent(getActivity(), ViewBooksListActivity.class);
                 i.putExtra("Type", "Genre");
                 startActivity(i);
             }
@@ -79,9 +80,9 @@ public class Tab1 extends Fragment {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
         apiService.addBooksData(etTitle.getText().toString(), etGenre.getText().toString(), etDescription.getText().toString()
-                , etAuthor.getText().toString(), etPublisher.getText().toString(), etPages.getText().toString()).enqueue(new Callback<GenreResponse>() {
+                , etAuthor.getText().toString(), etPublisher.getText().toString(), etPages.getText().toString()).enqueue(new Callback<BooksResponse>() {
             @Override
-            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+            public void onResponse(Call<BooksResponse> call, Response<BooksResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Added", Toast.LENGTH_SHORT).show();
                     etTitle.setText("");
@@ -94,7 +95,7 @@ public class Tab1 extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GenreResponse> call, Throwable t) {
+            public void onFailure(Call<BooksResponse> call, Throwable t) {
 
             }
         });
@@ -103,9 +104,9 @@ public class Tab1 extends Fragment {
     public void update() {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        apiService.updateGenreData("59d3a1e20baa3424465e5bf2", etTitle.getText().toString()).enqueue(new Callback<GenreResponse>() {
+        apiService.updateBooksData("59d542644df5451a58f8e081", etTitle.getText().toString()).enqueue(new Callback<BooksResponse>() {
             @Override
-            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+            public void onResponse(Call<BooksResponse> call, Response<BooksResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
                     etTitle.setText("");
@@ -113,7 +114,7 @@ public class Tab1 extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GenreResponse> call, Throwable t) {
+            public void onFailure(Call<BooksResponse> call, Throwable t) {
 
             }
         });

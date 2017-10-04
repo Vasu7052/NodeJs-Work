@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Genre Schema
 const bookSchema = mongoose.Schema({
-    name:{
+    title:{
         type: String,
         required: true
     },

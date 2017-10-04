@@ -10,7 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.vasu.firstapiproject_android.CustomAdapter.CustomAdapterForBooks;
 import com.example.vasu.firstapiproject_android.CustomAdapter.CustomAdapterForGenre;
+import com.example.vasu.firstapiproject_android.Model.Books;
+import com.example.vasu.firstapiproject_android.Model.BooksResponse;
 import com.example.vasu.firstapiproject_android.Model.Genre;
 import com.example.vasu.firstapiproject_android.Model.GenreResponse;
 import com.example.vasu.firstapiproject_android.helper.ApiClient;
@@ -28,7 +31,7 @@ public class ViewBooksListActivity extends AppCompatActivity {
 
     ListView lv ;
     ApiInterface apiService ;
-    ArrayList<Genre> arraylistGenre = new ArrayList<>();
+    ArrayList<Books> arraylistGenre = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +66,16 @@ public class ViewBooksListActivity extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
 
-                                apiService.deleteGenreData(arraylistGenre.get(i).get_id()).enqueue(new Callback<GenreResponse>() {
+                                apiService.deleteBooksData(arraylistGenre.get(i).get_id()).enqueue(new Callback<BooksResponse>() {
                                     @Override
-                                    public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                                    public void onResponse(Call<BooksResponse> call, Response<BooksResponse> response) {
                                         arraylistGenre.clear();
                                         int statusCode = response.code();
                                         showData();
                                     }
 
                                     @Override
-                                    public void onFailure(Call<GenreResponse> call, Throwable t) {
+                                    public void onFailure(Call<BooksResponse> call, Throwable t) {
 
                                     }
                                 });
@@ -89,18 +92,18 @@ public class ViewBooksListActivity extends AppCompatActivity {
 
     public void showData(){
 
-        apiService.getAllGenreData().enqueue(new Callback<GenreResponse>() {
+        apiService.getAllBooksData().enqueue(new Callback<BooksResponse>() {
             @Override
-            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+            public void onResponse(Call<BooksResponse> call, Response<BooksResponse> response) {
                 int statusCode = response.code();
-                List<Genre> genre = response.body().getResults();
-                arraylistGenre.addAll(genre) ;
-                CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewBooksListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
+                List<Books> books = response.body().getResults();
+                arraylistGenre.addAll(books) ;
+                CustomAdapterForBooks adapter = new CustomAdapterForBooks(ViewBooksListActivity.this , R.layout.list_item_for_books , arraylistGenre) ;
                 lv.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<GenreResponse> call, Throwable t) {
+            public void onFailure(Call<BooksResponse> call, Throwable t) {
                 Toast.makeText(ViewBooksListActivity.this, "" + t, Toast.LENGTH_LONG).show();
             }
         });

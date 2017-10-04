@@ -11,13 +11,13 @@ import java.util.List;
 public class BooksResponse {
 
     @SerializedName("allBooks")
-    private List<Genre> results;
+    private List<Books> results;
 
-    public List<Genre> getResults() {
+    public List<Books> getResults() {
         return results;
     }
 
-    public void setResults(List<Genre> results) {
+    public void setResults(List<Books> results) {
         this.results = results;
     }
 

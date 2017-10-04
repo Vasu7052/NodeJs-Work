@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Books {
 
+    @SerializedName("_id")
+    private String _id;
     @SerializedName("title")
     private String title ;
     @SerializedName("genre")
@@ -23,7 +25,8 @@ public class Books {
     @SerializedName("create_date")
     private String create_date ;
 
-    public Books(String title,String genre,String description,String author,String publisher,String pages,String create_date){
+    public Books(String _id,String title,String genre,String description,String author,String publisher,String pages,String create_date){
+        this._id = _id;
         this.title = title ;
         this.genre = genre ;
         this.description = description ;
@@ -31,6 +34,14 @@ public class Books {
         this.publisher = publisher ;
         this.pages = pages ;
         this.create_date = create_date ;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getTitle() {

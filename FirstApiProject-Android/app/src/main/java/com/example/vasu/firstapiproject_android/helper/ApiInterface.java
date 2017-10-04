@@ -1,5 +1,6 @@
 package com.example.vasu.firstapiproject_android.helper;
 
+import com.example.vasu.firstapiproject_android.Model.BooksResponse;
 import com.example.vasu.firstapiproject_android.Model.GenreResponse;
 import com.google.gson.JsonElement;
 
@@ -43,12 +44,12 @@ public interface ApiInterface {
     //============================================================================================================
 
     @GET("api/books/")
-    Call<GenreResponse> getAllBooksData() ;
+    Call<BooksResponse> getAllBooksData() ;
 
     @FormUrlEncoded
     @POST("api/books/add/")
-    Call<GenreResponse> addBooksData(
-            @Field("name") String title ,
+    Call<BooksResponse> addBooksData(
+            @Field("title") String title ,
             @Field("genre") String genre ,
             @Field("decription") String decription ,
             @Field("author") String author ,
@@ -58,12 +59,12 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @PUT("api/books/update/{id}")
-    Call<GenreResponse> updateBooksData(
+    Call<BooksResponse> updateBooksData(
             @Path("id") String _id ,
-            @Field("decription") String decription
+            @Field("title") String title
     ) ;
 
     @DELETE("api/books/delete/{id}")
-    Call<GenreResponse> deleteBooksData(@Path("id") String genreId);
+    Call<BooksResponse> deleteBooksData(@Path("id") String genreId);
 
 }
