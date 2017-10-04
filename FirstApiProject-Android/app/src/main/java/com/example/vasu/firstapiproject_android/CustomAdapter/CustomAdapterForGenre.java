@@ -33,7 +33,6 @@ public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterFor
     public CustomAdapterForGenre(Context context , List<Genre> genre) {
         this.context = context ;
         this.genre = genre;
-        Toast.makeText(this.context, "" + genre.size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -47,6 +46,7 @@ public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterFor
     @Override
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
         holder.name.setText(genre.get(position).getName());
+        Toast.makeText(context, ""+genre.get(position).getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
