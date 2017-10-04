@@ -28,7 +28,7 @@ public class ViewListActivity extends AppCompatActivity {
 
     ListView lv ;
     ApiInterface apiService ;
-    ArrayList<Genre> arraylistGenre ;
+    ArrayList<Genre> arraylistGenre = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,8 @@ public class ViewListActivity extends AppCompatActivity {
                                     arraylistGenre.clear();
                                     int statusCode = response.code();
                                     List<Genre> genre = response.body().getResults();
-                                    arraylistGenre = new ArrayList<Genre>(genre) ;
+                                    if (arraylistGenre != null)
+                                        arraylistGenre.addAll(genre) ;
                                     CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
                                     lv.setAdapter(adapter);
                                 }
@@ -107,7 +108,7 @@ public class ViewListActivity extends AppCompatActivity {
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                arraylistGenre = new ArrayList<Genre>(genre) ;
+                arraylistGenre.addAll(genre) ;
                 CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
                 lv.setAdapter(adapter);
             }

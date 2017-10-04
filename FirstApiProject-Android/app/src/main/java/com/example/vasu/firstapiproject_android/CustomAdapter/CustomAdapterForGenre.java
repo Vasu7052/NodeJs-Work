@@ -22,7 +22,6 @@ import java.util.ArrayList;
  */
 public class CustomAdapterForGenre extends ArrayAdapter<Genre> implements View.OnClickListener,Filterable {
 
-    private ArrayList<Genre> originalList;
     private ArrayList<Genre> usersList;
 
     public CustomAdapterForGenre(Context context, int textViewResourceId,
@@ -30,8 +29,6 @@ public class CustomAdapterForGenre extends ArrayAdapter<Genre> implements View.O
         super(context, textViewResourceId, usersList);
         this.usersList = new ArrayList<Genre>();
         this.usersList.addAll(usersList);
-        this.originalList = new ArrayList<Genre>();
-        this.originalList.addAll(usersList);
     }
 
     @Override
@@ -46,7 +43,6 @@ public class CustomAdapterForGenre extends ArrayAdapter<Genre> implements View.O
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
 
 
         ViewHolder holder = null;
