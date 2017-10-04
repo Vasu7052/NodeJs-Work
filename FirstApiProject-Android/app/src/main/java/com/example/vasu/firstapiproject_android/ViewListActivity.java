@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.vasu.firstapiproject_android.RecyclerViewClickListener.RecyclerItemListener;
+
 public class ViewListActivity extends AppCompatActivity {
+
+    RecyclerView rv ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,18 @@ public class ViewListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        rv = (RecyclerView) findViewById(R.id.list);
+
+        rv.addOnItemTouchListener(new RecyclerItemListener(this , new RecyclerItemListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view,final int position) {
+
+
+
+                    }
+                }));
+
+
     }
 
 }
