@@ -65,7 +65,7 @@ app.put('/api/genres/put/:_id', function(req, res){
 });
 });
 
-app.delete('/api/genres/:_id', function(req, res){
+app.delete('/api/genres/delete/:_id', function(req, res){
     var id = req.params._id;
     Genre.removeGenre(id, function(err, genre){
     if(err){

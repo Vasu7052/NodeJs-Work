@@ -8,10 +8,9 @@
     tools:context="com.example.vasu.firstapiproject_android.ViewListActivity"
     tools:showIn="@layout/activity_view_list">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="5sp" />
+        android:id="@+id/list"></ListView>
 
 </RelativeLayout>

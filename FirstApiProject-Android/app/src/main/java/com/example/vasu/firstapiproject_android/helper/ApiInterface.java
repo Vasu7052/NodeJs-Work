@@ -7,11 +7,13 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 /**
  * Created by Vasu on 04-10-2017.
@@ -32,5 +34,8 @@ public interface ApiInterface {
     Call<GenreResponse> updateGenreData(
             @Field("name") String name
     ) ;
+
+    @DELETE("api/genres/delete/{id}")
+    Call<GenreResponse> deleteGenreData(@Path("id") String genreId);
 
 }

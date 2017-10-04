@@ -1,56 +1,82 @@
 package com.example.vasu.firstapiproject_android.CustomAdapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.vasu.firstapiproject_android.Model.Genre;
 import com.example.vasu.firstapiproject_android.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
-public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterForGenre.MovieViewHolder> {
+/**
+ * Created by VASU on 1/2/2017.
+ */
+public class CustomAdapterForGenre extends ArrayAdapter<Genre> implements View.OnClickListener,Filterable {
 
-    private List<Genre> genre;
-    private Context context;
+    private ArrayList<Genre> originalList;
+    private ArrayList<Genre> usersList;
+
+    public CustomAdapterForGenre(Context context, int textViewResourceId,
+                                 ArrayList<Genre> usersList) {
+        super(context, textViewResourceId, usersList);
+        this.usersList = new ArrayList<Genre>();
+        this.usersList.addAll(usersList);
+        this.originalList = new ArrayList<Genre>();
+        this.originalList.addAll(usersList);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
+    private class ViewHolder {
+        public TextView name ;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
 
-        public MovieViewHolder(View v) {
-            super(v);
-            name = (TextView) v.findViewById(R.id.textViewName);
+
+        ViewHolder holder = null;
+        Log.v("ConvertView", String.valueOf(position));
+
+        final Genre users = usersList.get(position);
+
+        if (convertView == null) {
+
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
+                    Context.LAYOUT_INFLATER_SERVICE);
+
+            convertView = vi.inflate(R.layout.list_item_for_genre, null);
+
+            holder = new ViewHolder();
+            holder.name = (TextView) convertView.findViewById(R.id.textViewName);
+
+            convertView.setTag(holder);
+
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
-    }
 
-    public CustomAdapterForGenre(Context context , List<Genre> genre) {
-        this.context = context ;
-        this.genre = genre;
-    }
+        holder.name.setText(users.getName());
 
-    @Override
-    public CustomAdapterForGenre.MovieViewHolder onCreateViewHolder(ViewGroup parent,
-                                                            int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_for_genre, parent, false);
-        return new MovieViewHolder(view);
+        return convertView;
+
     }
 
 
-    @Override
-    public void onBindViewHolder(MovieViewHolder holder, final int position) {
-        holder.name.setText(genre.get(position).getName());
-        Toast.makeText(context, ""+genre.get(position).getName(), Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public int getItemCount() {
-        return genre.size();
-    }
+
 }

@@ -4,28 +4,31 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.vasu.firstapiproject_android.CustomAdapter.CustomAdapterForGenre;
 import com.example.vasu.firstapiproject_android.Model.Genre;
 import com.example.vasu.firstapiproject_android.Model.GenreResponse;
-import com.example.vasu.firstapiproject_android.RecyclerViewClickListener.RecyclerItemListener;
 import com.example.vasu.firstapiproject_android.helper.ApiClient;
 import com.example.vasu.firstapiproject_android.helper.ApiInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewListActivity extends AppCompatActivity {
 
-    RecyclerView rv ;
+    ListView lv ;
+    ApiInterface apiService ;
+    ArrayList<Genre> arraylistGenre ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class ViewListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        apiService = ApiClient.getClient().create(ApiInterface.class);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,31 +48,68 @@ public class ViewListActivity extends AppCompatActivity {
             }
         });
 
-        rv = (RecyclerView) findViewById(R.id.list);
+        lv = (ListView) findViewById(R.id.list);
 
         showData();
 
-        rv.addOnItemTouchListener(new RecyclerItemListener(this , new RecyclerItemListener.OnItemClickListener() {
-            @Override public void onItemClick(View view,final int position) {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                new SweetAlertDialog(ViewListActivity.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Take Action")
+                        .setContentText("Update or Delete!")
+                        .setConfirmText("Update")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
 
 
 
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .setCancelText("Delete")
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+
+                            apiService.deleteGenreData(arraylistGenre.get(i).get_id()).enqueue(new Callback<GenreResponse>() {
+                                @Override
+                                public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                                    arraylistGenre.clear();
+                                    int statusCode = response.code();
+                                    List<Genre> genre = response.body().getResults();
+                                    arraylistGenre = new ArrayList<Genre>(genre) ;
+                                    CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
+                                    lv.setAdapter(adapter);
+                                }
+
+                                @Override
+                                public void onFailure(Call<GenreResponse> call, Throwable t) {
+
+                                }
+                            }); ;
+
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
             }
-        }));
+        });
 
 
     }
 
     public void showData(){
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
         apiService.getAllGenreData().enqueue(new Callback<GenreResponse>() {
             @Override
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , genre) ;
-                rv.setAdapter(adapter);
+                arraylistGenre = new ArrayList<Genre>(genre) ;
+                CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
+                lv.setAdapter(adapter);
             }
 
             @Override
