@@ -48,12 +48,12 @@ public class ViewListActivity extends AppCompatActivity {
         showData();
 
         rv.addOnItemTouchListener(new RecyclerItemListener(this , new RecyclerItemListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view,final int position) {
+            @Override public void onItemClick(View view,final int position) {
 
 
 
-                    }
-                }));
+            }
+        }));
 
 
     }
@@ -66,8 +66,8 @@ public class ViewListActivity extends AppCompatActivity {
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                Toast.makeText(ViewListActivity.this, ""+genre.get(1).getName(), Toast.LENGTH_SHORT).show();
-                CustomAdapterForGenre adapter = new CustomAdapterForGenre(genre) ;
+                CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , genre) ;
+                Toast.makeText(ViewListActivity.this, ""+adapter, Toast.LENGTH_SHORT).show();
                 rv.setAdapter(adapter);
             }
 

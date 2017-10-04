@@ -6,52 +6,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.vasu.firstapiproject_android.Model.Genre;
 import com.example.vasu.firstapiproject_android.R;
 
 import java.util.List;
 
-public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterForGenre.MyViewHolder> {
 
-    private List<Genre> genreList;
-    private Context context ;
+public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterForGenre.MovieViewHolder> {
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        public TextView name;
+    private List<Genre> genre;
+    private Context context;
 
-        public MyViewHolder(View view) {
-            super(view);
-            name = (TextView) view.findViewById(R.id.textViewName);
 
+    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+        TextView name;
+
+
+        public MovieViewHolder(View v) {
+            super(v);
+            name = (TextView) v.findViewById(R.id.textViewName);
         }
-
     }
 
-
-
-    public CustomAdapterForGenre(List<Genre> genreList) {
-        this.genreList = genreList;
+    public CustomAdapterForGenre(Context context , List<Genre> genre) {
+        this.context = context ;
+        this.genre = genre;
+        Toast.makeText(this.context, "" + genre.size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Genre c = genreList.get(position);
-        holder.name.setText(c.getName());
+    public CustomAdapterForGenre.MovieViewHolder onCreateViewHolder(ViewGroup parent,
+                                                            int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_for_genre, parent, false);
+        return new MovieViewHolder(view);
+    }
 
+
+    @Override
+    public void onBindViewHolder(MovieViewHolder holder, final int position) {
+        holder.name.setText(genre.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return genreList.size();
+        return genre.size();
     }
-
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_for_genre,parent, false);
-        context = parent.getContext();
-        return new MyViewHolder(v);
-    }
-
 }
