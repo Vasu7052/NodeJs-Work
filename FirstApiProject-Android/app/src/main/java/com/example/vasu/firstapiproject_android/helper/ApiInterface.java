@@ -30,6 +30,7 @@ public interface ApiInterface {
             @Field("name") String name
     ) ;
 
+    @FormUrlEncoded
     @PUT("api/genres/update/{id}")
     Call<GenreResponse> updateGenreData(
             @Path("id") String _id ,
