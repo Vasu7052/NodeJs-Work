@@ -15,7 +15,7 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
 
-    @GET("/api/genres")
+    @GET("api/genres/")
     Call<GenreResponse> getAllGenreData() ;
 
 

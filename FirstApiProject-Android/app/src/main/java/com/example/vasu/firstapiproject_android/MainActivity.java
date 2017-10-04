@@ -31,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
         apiService.getAllGenreData().enqueue(new Callback<GenreResponse>() {
             @Override
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
+                Toast.makeText(MainActivity.this, "Status : " + statusCode , Toast.LENGTH_SHORT).show();
                 Toast.makeText(MainActivity.this, "Number of movies received: " + genre.size() , Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<GenreResponse> call, Throwable t) {
-
+                Toast.makeText(MainActivity.this, "" + t, Toast.LENGTH_LONG).show();
             }
         });
 
