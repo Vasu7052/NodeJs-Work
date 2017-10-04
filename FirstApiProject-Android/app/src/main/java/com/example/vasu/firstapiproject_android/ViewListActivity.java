@@ -79,10 +79,6 @@ public class ViewListActivity extends AppCompatActivity {
                                     arraylistGenre.clear();
                                     int statusCode = response.code();
                                     List<Genre> genre = response.body().getResults();
-                                    if (arraylistGenre != null)
-                                        arraylistGenre.addAll(genre) ;
-                                    CustomAdapterForGenre adapter = new CustomAdapterForGenre(ViewListActivity.this , R.layout.list_item_for_genre , arraylistGenre) ;
-                                    lv.setAdapter(adapter);
                                 }
 
                                 @Override
