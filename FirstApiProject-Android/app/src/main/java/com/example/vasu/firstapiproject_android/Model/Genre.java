@@ -10,9 +10,12 @@ public class Genre {
 
     @SerializedName("name")
     private String name ;
+    @SerializedName("create_date")
+    private String create_date ;
 
-    public Genre(String name){
+    public Genre(String name,String create_date){
         this.name = name ;
+        this.create_date = create_date ;
     }
 
     public String getName() {
@@ -21,6 +24,14 @@ public class Genre {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(String create_date) {
+        this.create_date = create_date;
     }
 
 }
