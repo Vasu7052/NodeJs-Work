@@ -39,7 +39,8 @@ app.get('/api/genres/', function(req, res){
     if(err){
         throw err;
     }
-    res.json(genres);
+    var temp = {"allGenres" : genres};
+    res.json(temp);
 });
 });
 

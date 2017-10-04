@@ -10,7 +10,7 @@ import java.util.List;
 
 public class GenreResponse {
 
-    @SerializedName("results")
+    @SerializedName("allGenres")
     private List<Genre> results;
 
     public List<Genre> getResults() {
