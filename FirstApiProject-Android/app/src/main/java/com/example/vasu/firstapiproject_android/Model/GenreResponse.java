@@ -12,8 +12,6 @@ public class GenreResponse {
 
     @SerializedName("results")
     private List<Genre> results;
-    @SerializedName("total_results")
-    private int totalResults;
 
     public List<Genre> getResults() {
         return results;
@@ -21,14 +19,6 @@ public class GenreResponse {
 
     public void setResults(List<Genre> results) {
         this.results = results;
-    }
-
-    public int getTotalResults() {
-        return totalResults;
-    }
-
-    public void setTotalResults(int totalResults) {
-        this.totalResults = totalResults;
     }
 
 }

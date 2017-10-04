@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        apiService.getAllGenreData(new Callback<GenreResponse>() {
+        apiService.getAllGenreData().enqueue(new Callback<GenreResponse>() {
             @Override
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 List<Genre> genre = response.body().getResults();
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<GenreResponse> call, Throwable t) {
 
             }
-        }) ;
+        });
 
     }
 }
