@@ -11,6 +11,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by Vasu on 04-10-2017.
@@ -27,5 +28,9 @@ public interface ApiInterface {
             @Field("name") String name
     ) ;
 
+    @PUT("api/genres/put/{id}")
+    Call<GenreResponse> updateGenreData(
+            @Field("name") String name
+    ) ;
 
 }

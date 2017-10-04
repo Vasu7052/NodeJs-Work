@@ -54,7 +54,7 @@ app.post('/api/genres/add', function(req, res){
 });
 });
 
-app.put('/api/genres/:_id', function(req, res){
+app.put('/api/genres/put/:_id', function(req, res){
     var id = req.params._id;
     var genre = req.body;
     Genre.updateGenre(id, genre, {}, function(err, genre){
