@@ -9,12 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.vasu.firstapiproject_android.CustomAdapter.CustomAdapterForGenre;
 import com.example.vasu.firstapiproject_android.Model.Genre;
 import com.example.vasu.firstapiproject_android.Model.GenreResponse;
 import com.example.vasu.firstapiproject_android.RecyclerViewClickListener.RecyclerItemListener;
 import com.example.vasu.firstapiproject_android.helper.ApiClient;
 import com.example.vasu.firstapiproject_android.helper.ApiInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -64,8 +66,8 @@ public class ViewListActivity extends AppCompatActivity {
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                Toast.makeText(ViewListActivity.this , "Status : " + statusCode , Toast.LENGTH_SHORT).show();
-                Toast.makeText(ViewListActivity.this, "Number of movies received: " + genre.size() , Toast.LENGTH_SHORT).show();
+                CustomAdapterForGenre adapter = new CustomAdapterForGenre(genre) ;
+                rv.setAdapter(adapter);
             }
 
             @Override
