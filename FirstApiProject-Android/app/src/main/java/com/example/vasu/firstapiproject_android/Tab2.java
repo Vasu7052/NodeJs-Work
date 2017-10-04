@@ -68,7 +68,6 @@ public class Tab2 extends Fragment {
             @Override
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText( getActivity() , "Status : " + response.code() , Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity() , "Added" , Toast.LENGTH_SHORT).show();
                 }
             }

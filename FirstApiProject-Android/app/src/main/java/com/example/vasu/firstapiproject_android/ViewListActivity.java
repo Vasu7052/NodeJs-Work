@@ -34,8 +34,6 @@ public class ViewListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        showData();
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +44,8 @@ public class ViewListActivity extends AppCompatActivity {
         });
 
         rv = (RecyclerView) findViewById(R.id.list);
+
+        showData();
 
         rv.addOnItemTouchListener(new RecyclerItemListener(this , new RecyclerItemListener.OnItemClickListener() {
                     @Override public void onItemClick(View view,final int position) {
@@ -66,7 +66,8 @@ public class ViewListActivity extends AppCompatActivity {
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                CustomAdapterForGenre adapter = new CustomAdapterForGenre(genre) ;
+                ArrayList<Genre> arrayList = new ArrayList<Genre>(genre) ;
+                CustomAdapterForGenre adapter = new CustomAdapterForGenre(arrayList) ;
                 rv.setAdapter(adapter);
             }
 

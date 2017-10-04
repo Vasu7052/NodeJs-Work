@@ -30,8 +30,8 @@ public class CustomAdapterForGenre extends RecyclerView.Adapter<CustomAdapterFor
 
 
 
-    public CustomAdapterForGenre(List<Genre> countryList) {
-        this.genreList = countryList;
+    public CustomAdapterForGenre(List<Genre> genreList) {
+        this.genreList = genreList;
     }
 
     @Override
