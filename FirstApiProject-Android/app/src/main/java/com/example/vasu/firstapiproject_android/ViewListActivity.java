@@ -66,8 +66,8 @@ public class ViewListActivity extends AppCompatActivity {
             public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                 int statusCode = response.code();
                 List<Genre> genre = response.body().getResults();
-                ArrayList<Genre> arrayList = new ArrayList<Genre>(genre) ;
-                CustomAdapterForGenre adapter = new CustomAdapterForGenre(arrayList) ;
+                Toast.makeText(ViewListActivity.this, ""+genre.get(1).getName(), Toast.LENGTH_SHORT).show();
+                CustomAdapterForGenre adapter = new CustomAdapterForGenre(genre) ;
                 rv.setAdapter(adapter);
             }
 
