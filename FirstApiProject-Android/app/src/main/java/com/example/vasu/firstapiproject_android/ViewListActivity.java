@@ -78,7 +78,7 @@ public class ViewListActivity extends AppCompatActivity {
                                 public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
                                     arraylistGenre.clear();
                                     int statusCode = response.code();
-                                    List<Genre> genre = response.body().getResults();
+                                    showData();
                                 }
 
                                 @Override

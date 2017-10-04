@@ -30,8 +30,9 @@ public interface ApiInterface {
             @Field("name") String name
     ) ;
 
-    @PUT("api/genres/put/{id}")
+    @PUT("api/genres/update/{id}")
     Call<GenreResponse> updateGenreData(
+            @Path("id") String _id ,
             @Field("name") String name
     ) ;
 
