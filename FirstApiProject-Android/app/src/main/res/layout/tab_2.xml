@@ -49,6 +49,6 @@
         android:layout_marginRight="10sp"
         android:clickable="true"
         app:fabSize="normal"
-        app:srcCompat="@drawable/ic_add_white_24dp" />
+        app:srcCompat="@drawable/ic_format_list_bulleted_white_32dp" />
 
 </RelativeLayout>
