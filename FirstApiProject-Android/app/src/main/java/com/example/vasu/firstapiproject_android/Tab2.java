@@ -6,21 +6,65 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.vasu.firstapiproject_android.Model.Genre;
+import com.example.vasu.firstapiproject_android.Model.GenreResponse;
+import com.example.vasu.firstapiproject_android.helper.ApiClient;
+import com.example.vasu.firstapiproject_android.helper.ApiInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by hp1 on 21-01-2015.
  */
 public class Tab2 extends Fragment {
 
-    ListView lv;
+    EditText etName ;
+    Button btnAdd ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.tab_2,container,false);
 
+        etName = v.findViewById(R.id.editTextTitle);
+        btnAdd = v.findViewById(R.id.buttonAdd);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                add();
+            }
+        });
 
 
         return v;
     }
+
+    public void add(){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+        apiService.addGenreData(etName.getText().toString()).enqueue(new Callback<GenreResponse>() {
+            @Override
+            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText( getActivity() , "Status : " + response.code() , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity() , "Added" , Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GenreResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

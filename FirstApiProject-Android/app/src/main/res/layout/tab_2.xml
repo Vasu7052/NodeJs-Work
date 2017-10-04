@@ -1,8 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10sp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
+        android:layout_marginTop="50sp"
+        android:background="#ffffff"
+        android:elevation="5sp"
+        android:ems="10"
+        android:hint="Type"
+        android:inputType="textPersonName"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp" />
 
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:background="@color/colorAccent"
+        android:elevation="5sp"
+        android:ems="10"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:text="ADD"
+        android:layout_below="@+id/editTextTitle"
+        android:layout_alignLeft="@+id/editTextTitle"
+        android:layout_alignStart="@+id/editTextTitle"
+        android:layout_alignRight="@+id/editTextTitle"
+        android:layout_alignEnd="@+id/editTextTitle" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10sp"
+        android:layout_marginRight="10sp"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
 
 </RelativeLayout>
