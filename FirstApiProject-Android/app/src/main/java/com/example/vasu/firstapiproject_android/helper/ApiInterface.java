@@ -1,5 +1,6 @@
 package com.example.vasu.firstapiproject_android.helper;
 
+import com.example.vasu.firstapiproject_android.Model.GenreResponse;
 import com.google.gson.JsonElement;
 
 import retrofit2.Callback;
@@ -12,7 +13,7 @@ import retrofit2.http.GET;
 public interface ApiInterface {
 
     @GET("/api/genres/")
-    void getAllGenreData(Callback<JsonElement> callback) ;
+    void getAllGenreData(Callback<GenreResponse> callback) ;
 
 
 }
