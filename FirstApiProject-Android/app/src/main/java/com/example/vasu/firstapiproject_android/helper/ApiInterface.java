@@ -8,6 +8,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -20,6 +21,7 @@ public interface ApiInterface {
     @GET("api/genres/")
     Call<GenreResponse> getAllGenreData() ;
 
+    @FormUrlEncoded
     @POST("api/genres/add/")
     Call<GenreResponse> addGenreData(
             @Field("name") String name
