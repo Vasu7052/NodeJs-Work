@@ -1,7 +1,9 @@
 package com.example.vasu.firstapiproject_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ public class Tab2 extends Fragment {
 
     EditText etName ;
     Button btnAdd ;
+    FloatingActionButton fab ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,11 +39,21 @@ public class Tab2 extends Fragment {
 
         etName = v.findViewById(R.id.editTextTitle);
         btnAdd = v.findViewById(R.id.buttonAdd);
+        fab = v.findViewById(R.id.floatingActionButton);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 add();
+            }
+        });
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity() , ViewListActivity.class);
+                i.putExtra("Type" , "Genre") ;
+                startActivity(i);
             }
         });
 
