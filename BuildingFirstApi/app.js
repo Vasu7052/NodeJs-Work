@@ -89,7 +89,7 @@ app.get('/api/books/', function(req, res){
     });
 });
 
-app.get('/api/books/:_id', function(req, res){
+app.get('/api/books/byId/:_id', function(req, res){
     Book.getBooksById(req.params._id, function(err, book){
     if(err){
         throw err;
@@ -98,7 +98,7 @@ app.get('/api/books/:_id', function(req, res){
 });
 });
 
-app.post('/api/books', function(req, res){
+app.post('/api/books/add/', function(req, res){
     var book = req.body;
     Book.addBook(book, function(err, book){
     if(err){
@@ -108,7 +108,7 @@ app.post('/api/books', function(req, res){
 });
 });
 
-app.put('/api/books/:_id', function(req, res){
+app.put('/api/books/update/:_id', function(req, res){
     var id = req.params._id;
     var book = req.body;
     Book.updateBook(id, book, {}, function(err, book){
@@ -119,7 +119,7 @@ app.put('/api/books/:_id', function(req, res){
 });
 });
 
-app.delete('/api/books/:_id', function(req, res){
+app.delete('/api/books/delete/:_id', function(req, res){
     var id = req.params._id;
     Book.removeBook(id, function(err, book){
     if(err){

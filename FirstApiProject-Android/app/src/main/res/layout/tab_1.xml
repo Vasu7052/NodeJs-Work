@@ -4,40 +4,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <EditText
-        android:id="@+id/editTextTitle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="25sp"
-        android:layout_marginRight="25sp"
-        android:layout_marginTop="50sp"
-        android:background="#ffffff"
-        android:elevation="5sp"
-        android:ems="10"
-        android:hint="Title"
-        android:inputType="textPersonName"
-        android:paddingLeft="15sp"
-        android:paddingRight="10sp"
-        android:layout_marginBottom="10sp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="match_parent"
-        android:layout_height="55sp"
-        android:background="@color/colorAccent"
-        android:elevation="5sp"
-        android:ems="10"
-        android:paddingLeft="15sp"
-        android:paddingRight="10sp"
-        android:text="ADD"
-        android:layout_below="@+id/editTextTitle"
-        android:layout_alignLeft="@+id/editTextTitle"
-        android:layout_alignStart="@+id/editTextTitle"
-        android:layout_alignRight="@+id/editTextTitle"
-        android:layout_alignEnd="@+id/editTextTitle" />
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:layout_marginTop="10sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editTextGenre"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Genre"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editTextAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Author"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editTextPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Publisher"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <EditText
+            android:id="@+id/editTextPages"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
+            android:background="#ffffff"
+            android:elevation="5sp"
+            android:ems="10"
+            android:hint="Pages"
+            android:inputType="textPersonName"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_alignEnd="@+id/editTextTitle"
+            android:layout_alignLeft="@+id/editTextTitle"
+            android:layout_alignRight="@+id/editTextTitle"
+            android:layout_alignStart="@+id/editTextTitle"
+            android:layout_below="@+id/editTextTitle"
+            android:layout_marginLeft="75sp"
+            android:layout_marginRight="75sp"
+            android:background="@color/colorAccent"
+            android:elevation="5sp"
+            android:ems="10"
+            android:paddingLeft="15sp"
+            android:paddingRight="10sp"
+            android:text="ADD" />
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"

@@ -40,4 +40,30 @@ public interface ApiInterface {
     @DELETE("api/genres/delete/{id}")
     Call<GenreResponse> deleteGenreData(@Path("id") String genreId);
 
+    //============================================================================================================
+
+    @GET("api/books/")
+    Call<GenreResponse> getAllBooksData() ;
+
+    @FormUrlEncoded
+    @POST("api/books/add/")
+    Call<GenreResponse> addBooksData(
+            @Field("name") String title ,
+            @Field("genre") String genre ,
+            @Field("decription") String decription ,
+            @Field("author") String author ,
+            @Field("publisher") String publisher ,
+            @Field("pages") String pages
+    ) ;
+
+    @FormUrlEncoded
+    @PUT("api/books/update/{id}")
+    Call<GenreResponse> updateBooksData(
+            @Path("id") String _id ,
+            @Field("decription") String decription
+    ) ;
+
+    @DELETE("api/books/delete/{id}")
+    Call<GenreResponse> deleteBooksData(@Path("id") String genreId);
+
 }

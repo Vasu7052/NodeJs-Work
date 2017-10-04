@@ -57,35 +57,25 @@ public class ViewBooksListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 new SweetAlertDialog(ViewBooksListActivity.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Take Action")
-                        .setContentText("Update or Delete!")
-                        .setConfirmText("Update")
+                        .setContentText("Delete or not!!")
+                        .setConfirmText("Yes")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
 
+                                apiService.deleteGenreData(arraylistGenre.get(i).get_id()).enqueue(new Callback<GenreResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                                        arraylistGenre.clear();
+                                        int statusCode = response.code();
+                                        showData();
+                                    }
 
+                                    @Override
+                                    public void onFailure(Call<GenreResponse> call, Throwable t) {
 
-                                sDialog.dismissWithAnimation();
-                            }
-                        })
-                        .setCancelText("Delete")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-
-                            apiService.deleteGenreData(arraylistGenre.get(i).get_id()).enqueue(new Callback<GenreResponse>() {
-                                @Override
-                                public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
-                                    arraylistGenre.clear();
-                                    int statusCode = response.code();
-                                    showData();
-                                }
-
-                                @Override
-                                public void onFailure(Call<GenreResponse> call, Throwable t) {
-
-                                }
-                            }); ;
+                                    }
+                                });
 
                                 sDialog.dismissWithAnimation();
                             }
