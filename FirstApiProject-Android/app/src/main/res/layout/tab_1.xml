@@ -4,5 +4,20 @@
     android:layout_height="match_parent">
 
 
-
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp"
+        android:layout_marginTop="50sp"
+        android:background="#ffffff"
+        android:elevation="5sp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp" />
 </RelativeLayout>
