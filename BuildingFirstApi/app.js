@@ -84,7 +84,8 @@ app.get('/api/books/', function(req, res){
         if(err){
             throw err;
         }
-        res.json(books);
+        var temp = {allBooks : books} ;
+        res.json(temp);
     });
 });
 
