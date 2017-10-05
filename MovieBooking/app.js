@@ -45,9 +45,8 @@ app.post("/api/users/add/" , function (req,res) {
     Users.create({name : req.body.name , email : req.body.email , password : req.body.password , type : req.body.type}).exec(function(err, users) {
         if(err) {
             res.send('error occured');
-        } else {
-            res.send("User Registered");
         }
+        res.json(users);
     });
 });
 app.get("/api/users/byId/:_id" , function (req,res) {
