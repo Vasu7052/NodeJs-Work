@@ -1,9 +1,25 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require("mongoose") ;
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const usersSchema = mongoose.Schema({
+
+    name : {
+        type : String ,
+        required : true
+    },email : {
+        type : String ,
+        required : true
+    },password : {
+        type : String ,
+        required : true
+    },type : {
+        type : String ,
+        required : true
+    }
+
 });
 
-module.exports = router;
+const Users = module.exports = mongoose.model("Users" , moviesSchema , "userList") ;
+
+module.exports.getAllUsers = function (callback,limit) {
+    Users.find(callback).limit(limit) ;
+};
