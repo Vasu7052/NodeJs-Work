@@ -41,6 +41,15 @@ app.get("/api/users/all/" , function (req,res) {
     });
 });
 
+app.post("/api/users/add/" , function (req,res) {
+    Users.create({name : req.body.name , email : req.body.email , password : req.body.password , type : req.body.type}).exec(function(err, users) {
+        if(err) {
+            res.send('error occured');
+        } else {
+            res.send("User Registered");
+        }
+    });
+});
 app.get("/api/users/byId/:_id" , function (req,res) {
     Users.findOne({
         _id: req.params._id
