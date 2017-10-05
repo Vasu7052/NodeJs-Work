@@ -23,6 +23,9 @@ const moviesSchema = mongoose.Schema({
     },imdbRating : {
         type : Number ,
         required : true
+    },image : {
+        type : String ,
+        required : true
     },create_date:{
         type: Date,
         default: Date.now
