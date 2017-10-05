@@ -55,10 +55,10 @@ app.get("/api/users/byId/:_id" , function (req,res) {
 });
 
 app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
-    Users.findOne({
-        email: req.params.email ,
-        password : req.params.password
-    }).exec(function(err, users) {
+    Users.find({ $and : [
+        { email: req.params.email },
+        { password : req.params.password }
+    ]}).exec(function(err, users) {
             if(err) {
                 res.send('error occured')
             } else {
