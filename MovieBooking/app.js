@@ -35,7 +35,8 @@ app.get("/api/users/all/" , function (req,res) {
         if(err) {
             res.send('error occured')
         } else {
-            res.json(users);
+            var temp = {queriedUsers : users} ;
+            res.json(temp);
         }
     });
 });
@@ -47,7 +48,8 @@ app.get("/api/users/byId/:_id" , function (req,res) {
         if(err) {
             res.send('error occured')
         } else {
-            res.json(users);
+            var temp = {queriedUsers : users} ;
+            res.json(temp);
         }
     });
 });
@@ -60,9 +62,24 @@ app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
             if(err) {
                 res.send('error occured')
             } else {
-                res.json(users);
+                var temp = {queriedUsers : users} ;
+                res.json(temp);
             }
         });
+});
+
+app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
+    Users.findOne({
+        email: req.params.email ,
+        password : req.params.password
+    }).exec(function(err, users) {
+        if(err) {
+            res.send('error occured')
+        } else {
+            var temp = {queriedUsers : users} ;
+            res.json(temp);
+        }
+    });
 });
 
 // ====================================================================================================
@@ -74,7 +91,8 @@ app.get("/api/movies/all/" , function (req,res) {
         if(err) {
             res.send('error occured')
         } else {
-            res.json(movies);
+            var temp = {queriedMovies : movies} ;
+            res.json(temp);
         }
     });
 });
@@ -86,7 +104,8 @@ app.get("/api/movies/byId/:_id" , function (req,res) {
         if(err) {
             res.send('error occured')
         } else {
-            res.json(movies);
+            var temp = {queriedMovies : movies} ;
+            res.json(temp);
         }
     });
 });
