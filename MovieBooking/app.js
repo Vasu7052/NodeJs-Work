@@ -31,23 +31,25 @@ app.use('/', index);
 // =============================================== Users =============================================
 
 app.get("/api/users/all/" , function (req,res) {
-    Users.getAllUsers(function (err,users) {
-        if(err){
-            throw err;
+    Users.find({}).exec(function(err, users) {
+        if(err) {
+            res.send('error occured')
+        } else {
+            res.json(users);
         }
-        var temp = {"queriedUsers" : users};
-        res.json(temp);
-    })
+    });
 });
 
 app.get("/api/users/byId/:_id" , function (req,res) {
-    Users.getUserById(req.params._id , function (err,users) {
-        if(err){
-            throw err;
+    Users.findOne({
+        _id: req.params._id
+    }).exec(function(err, users) {
+        if(err) {
+            res.send('error occured')
+        } else {
+            res.json(users);
         }
-        var temp = {"queriedUsers" : users};
-        res.json(temp);
-    })
+    });
 });
 
 app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
@@ -68,13 +70,25 @@ app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
 // =============================================== Movies =============================================
 
 app.get("/api/movies/all/" , function (req,res) {
-    Movies.getAllMovies(function (err,movies) {
-        if(err){
-            throw err;
+    Movies.find({}).exec(function(err, movies) {
+        if(err) {
+            res.send('error occured')
+        } else {
+            res.json(movies);
         }
-        var temp = {"allMovies" : movies};
-        res.json(temp);
-    })
+    });
+});
+
+app.get("/api/movies/byId/:_id" , function (req,res) {
+    Movies.findOne({
+        _id: req.params._id
+    }).exec(function(err, movies) {
+        if(err) {
+            res.send('error occured')
+        } else {
+            res.json(movies);
+        }
+    });
 });
 
 

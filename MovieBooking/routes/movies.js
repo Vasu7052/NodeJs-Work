@@ -31,7 +31,3 @@ const moviesSchema = mongoose.Schema({
 });
 
 const Movie = module.exports = mongoose.model("Movie" , moviesSchema , "movieList") ;
-
-module.exports.getAllMovies = function (callback,limit) {
-    Movie.find(callback).limit(limit) ;
-};
