@@ -27,3 +27,7 @@ module.exports.getAllUsers = function (callback,limit) {
 module.exports.getUserById = function (id , callback) {
     Users.findById(id,callback) ;
 };
+
+module.exports.getUserByEmailAndPassword = function (object,callback) {
+    Users.findOne(object,callback) ;
+};

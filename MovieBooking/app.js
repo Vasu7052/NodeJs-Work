@@ -31,21 +31,32 @@ app.use('/', index);
 // =============================================== Users =============================================
 
 app.get("/api/users/all/" , function (req,res) {
-    Users.getAllUsers(function (err,movies) {
+    Users.getAllUsers(function (err,users) {
         if(err){
             throw err;
         }
-        var temp = {"allUsers" : movies};
+        var temp = {"queriedUsers" : users};
         res.json(temp);
     })
 });
 
-app.get("/api/users/byId/:id" , function (req,res) {
-    Users.getUserById(req.params._id , function (err,movies) {
+app.get("/api/users/byId/:_id" , function (req,res) {
+    Users.getUserById(req.params._id , function (err,users) {
         if(err){
             throw err;
         }
-        var temp = {"allUsers" : movies};
+        var temp = {"queriedUsers" : users};
+        res.json(temp);
+    })
+});
+
+app.get("/api/users/byEmailPass/" , function (req,res) {
+    var obj = req.body ;
+    Users.getUserById(obj , function (err,users) {
+        if(err){
+            throw err;
+        }
+        var temp = {"queriedUsers" : users};
         res.json(temp);
     })
 });
