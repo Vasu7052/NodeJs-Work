@@ -50,15 +50,17 @@ app.get("/api/users/byId/:_id" , function (req,res) {
     })
 });
 
-app.get("/api/users/byEmailPass/" , function (req,res) {
-    var obj = req.body ;
-    Users.getUserById(obj , function (err,users) {
-        if(err){
-            throw err;
-        }
-        var temp = {"queriedUsers" : users};
-        res.json(temp);
-    })
+app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
+    Users.findOne({
+        email: req.params.email ,
+        password : req.params.password
+    }).exec(function(err, users) {
+            if(err) {
+                res.send('error occured')
+            } else {
+                res.json(users);
+            }
+        });
 });
 
 // ====================================================================================================
