@@ -18,8 +18,12 @@ const usersSchema = mongoose.Schema({
 
 });
 
-const Users = module.exports = mongoose.model("Users" , moviesSchema , "userList") ;
+const Users = module.exports = mongoose.model("Users" , usersSchema , "userList") ;
 
 module.exports.getAllUsers = function (callback,limit) {
     Users.find(callback).limit(limit) ;
+};
+
+module.exports.getUserById = function (id , callback) {
+    Users.findById(id,callback) ;
 };

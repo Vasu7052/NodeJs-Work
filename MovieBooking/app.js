@@ -9,7 +9,7 @@ var mongoose  = require("mongoose") ;
 mongoose.connect('mongodb://localhost/movieBooking', { useMongoClient: true }) ;
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var Users = require('./routes/users');
 var Movies = require('./routes/movies');
 
 var app = express();
@@ -27,7 +27,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+
+// =============================================== Users =============================================
+
+app.get("/api/users/all/" , function (req,res) {
+    Users.getAllUsers(function (err,movies) {
+        if(err){
+            throw err;
+        }
+        var temp = {"allUsers" : movies};
+        res.json(temp);
+    })
+});
+
+app.get("/api/users/byId/:id" , function (req,res) {
+    Users.getUserById(req.params._id , function (err,movies) {
+        if(err){
+            throw err;
+        }
+        var temp = {"allUsers" : movies};
+        res.json(temp);
+    })
+});
+
+// ====================================================================================================
 
 // =============================================== Movies =============================================
 
