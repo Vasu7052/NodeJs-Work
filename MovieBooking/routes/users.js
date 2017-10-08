@@ -14,7 +14,7 @@ const usersSchema = mongoose.Schema({
     },type : {
         type : String ,
         required : true
-    },profilePhtot : {
+    },profilePhoto : {
         type : String ,
         required : true
     },create_date:{

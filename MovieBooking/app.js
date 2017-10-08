@@ -102,7 +102,7 @@ app.get("/api/movies/all/" , function (req,res) {
 });
 
 app.get("/api/movies/byId/:_id" , function (req,res) {
-    Movies.findOne({
+    Movies.find({
         _id: req.params._id
     }).exec(function(err, movies) {
         if(err) {
