@@ -62,34 +62,19 @@ app.get("/api/users/byId/:_id" , function (req,res) {
     });
 });
 app.get("/api/users/byEmail/:email" , function (req,res) {
-    Users.findOne({
-        email: req.params.email
-    }).exec(function(err, users) {
+    Users.find({
+        email: req.params.email} , function(err, users) {
         if(err) {
             res.send('error occured')
         } else {
             var temp = {queriedUsers : users} ;
             res.json(temp);
         }
-    });
+    }) ;
 });
 
 app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
-    Users.find({ $and : [
-        { email: req.params.email },
-        { password : req.params.password }
-    ]}).exec(function(err, users) {
-            if(err) {
-                res.send('error occured')
-            } else {
-                var temp = {queriedUsers : users} ;
-                res.json(temp);
-            }
-        });
-});
-
-app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
-    Users.findOne({
+    Users.find({
         email: req.params.email ,
         password : req.params.password} , function(err, users) {
         if(err) {
