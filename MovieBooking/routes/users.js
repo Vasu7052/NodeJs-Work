@@ -18,7 +18,6 @@ const usersSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
-});
+},{versionKey : false});
 
 const Users = module.exports = mongoose.model("Users" , usersSchema , "userList") ;
