@@ -42,7 +42,7 @@ app.get("/api/users/all/" , function (req,res) {
 });
 
 app.post("/api/users/add/" , function (req,res) {
-    Users.create({name : req.body.name , email : req.body.email , password : req.body.password , type : req.body.type}).exec(function(err, users) {
+    Users.create(req.body , function(err, users) {
         if(err) {
             res.send('error occured');
         }
@@ -79,8 +79,7 @@ app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
 app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
     Users.findOne({
         email: req.params.email ,
-        password : req.params.password
-    }).exec(function(err, users) {
+        password : req.params.password} , function(err, users) {
         if(err) {
             res.send('error occured')
         } else {
@@ -95,7 +94,7 @@ app.get("/api/users/byEmailPass/:email&:password" , function (req,res) {
 // =============================================== Movies =============================================
 
 app.get("/api/movies/all/" , function (req,res) {
-    Movies.find({}).exec(function(err, movies) {
+    Movies.find({},function(err, movies) {
         if(err) {
             res.send('error occured')
         } else {
